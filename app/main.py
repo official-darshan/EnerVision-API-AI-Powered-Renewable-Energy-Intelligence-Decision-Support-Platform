@@ -1,8 +1,9 @@
 from fastapi import FastAPI
-from app.api.v1 import health, weather
+from app.api.v1 import health, weather, solar
 from app.core.config import APP_NAME, API_V1_PREFIX
 
 app = FastAPI(title=APP_NAME)
 
 app.include_router(health.router, prefix=API_V1_PREFIX)
 app.include_router(weather.router, prefix=API_V1_PREFIX)
+app.include_router(solar.router, prefix=API_V1_PREFIX)
