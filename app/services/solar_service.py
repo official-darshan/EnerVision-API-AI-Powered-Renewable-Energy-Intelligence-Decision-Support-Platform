@@ -1,6 +1,7 @@
 import joblib
 import pandas as pd
 from datetime import datetime
+from fastapi import HTTPException
 from app.services.weather_service import get_daily_forecast_features
 
 MODEL_PATH = "models/random_forest.pkl"
@@ -12,7 +13,13 @@ _model = None
 def get_model():
     global _model
     if _model is None:
-        _model = joblib.load(MODEL_PATH)
+        try:
+            _model = joblib.load(MODEL_PATH)
+        except FileNotFoundError:
+            raise HTTPException(
+                status_code=503,
+                detail="Prediction model is not available. Run the training pipeline before using this endpoint.",
+            )
     return _model
 
 
