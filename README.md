@@ -1,246 +1,54 @@
 # EnerVision API
 
-## AI-Powered Renewable Energy Intelligence and Decision Support Platform
-
-## Overview
-
-EnerVision API is a research-inspired Data Science project that aims to bring together renewable energy analytics, machine learning, and API development into a single platform.
-
-The project is designed to collect data from publicly available renewable energy and weather APIs, process the data using machine learning techniques, and provide intelligent insights through a REST API. Rather than simply displaying raw information, the platform focuses on generating meaningful predictions and recommendations that can support energy-related decision making.
-
-This project is being developed as part of an academic API subject while following industry standards in software engineering and Data Science. The long-term goal is to create a scalable and modular platform that demonstrates how AI can be used in the renewable energy sector.
-
----
+AI-powered renewable energy intelligence and decision support platform. Predicts solar radiation potential for a location and produces explainable, data-backed recommendations — built as an academic + portfolio project.
 
 ## Problem Statement
+Renewable energy planning benefits from knowing not just current weather, but forecasted solar generation potential and what that means in practical terms. EnerVision combines live weather data, historical patterns, and machine learning to answer: "how much solar generation potential should I expect today, and what should I do with that information?"
 
-Renewable energy systems depend heavily on environmental conditions such as temperature, solar radiation, wind speed, humidity, and cloud cover. Data related to these factors is often spread across multiple platforms and available in different formats.
+## Objectives
+- Ingest and clean historical solar/weather data
+- Train and compare ML models for solar radiation forecasting
+- Serve live, explainable predictions via a REST API
+- Provide plain-language, data-backed recommendations (not a black box)
 
-Developers and researchers usually need to integrate several APIs, clean the collected data, and build their own analytical models before they can derive meaningful insights.
+## Features
+- Live weather lookup (Open-Meteo)
+- Solar radiation forecasting (trained Random Forest model)
+- Explainable recommendations based on historical percentile thresholds
+- Full Swagger/OpenAPI documentation
 
-EnerVision API aims to simplify this process by providing a centralized platform that combines data collection, machine learning, and API services into one system.
+## Architecture
 
----
+EnerVision-API/
+├── app/
+│ ├── main.py, core/, api/, database/, models/, schemas/, services/, ml/, utils/
+├── tests/ ├── data/ ├── notebooks/ ├── docs/
+├── models/ (saved ML artifacts)
 
-## Project Objectives
-
-The main objectives of this project are:
-
-- Develop a production-ready REST API using FastAPI.
-- Collect renewable energy and weather data from free public APIs.
-- Apply machine learning techniques to generate predictions and insights.
-- Build a modular and scalable backend architecture.
-- Provide clean and well-documented API endpoints.
-- Follow software engineering best practices throughout development.
-- Explore the practical application of Data Science in the renewable energy sector.
-
----
-
-## Key Features (Planned)
-
-- Renewable energy data aggregation
-- Weather data integration
-- Solar energy analytics
-- Wind energy analytics
-- Machine learning based prediction models
-- Energy demand forecasting
-- Recommendation engine
-- RESTful API architecture
-- Interactive API documentation
-- Database integration
-- Secure and scalable backend
-- Modular project architecture
-
----
 
 ## Technology Stack
-
-### Backend
-
-- Python
-- FastAPI
-- SQLAlchemy
-
-### Database
-
-- PostgreSQL
-
-### Machine Learning
-
-- Scikit-learn
-- Pandas
-- NumPy
-- XGBoost (planned)
-
-### API Documentation
-
-- Swagger UI
-- OpenAPI Specification
-
-### Deployment
-
-- Docker
-- GitHub
-
----
-
-## Planned System Workflow
-
-```
-Public APIs
-      │
-      ▼
-Data Collection
-      │
-      ▼
-Data Cleaning
-      │
-      ▼
-Database
-      │
-      ▼
-Feature Engineering
-      │
-      ▼
-Machine Learning Models
-      │
-      ▼
-Prediction Engine
-      │
-      ▼
-REST API
-      │
-      ▼
-Dashboard / Client Applications
-```
-
----
-
-## Project Status
-
-This project is currently in the planning and system design phase.
-
-The initial development will focus on:
-
-- Project architecture
-- Database design
-- API design
-- Data collection pipeline
-- Backend development
-
-Machine learning models and advanced analytics will be implemented in later stages.
-
----
-
-## Project Structure
-
-The directory structure may evolve as development progresses.
-
-```
-EnerVision-API/
-│
-├── app/
-├── api/
-├── core/
-├── database/
-├── models/
-├── schemas/
-├── services/
-├── ml/
-├── utils/
-├── tests/
-├── docs/
-├── requirements.txt
-├── README.md
-└── main.py
-```
-
----
-
-## Development Roadmap
-
-### Phase 1
-
-- Project planning
-- Literature review
-- Requirement analysis
-- System design
-
-### Phase 2
-
-- Backend setup
-- Database implementation
-- API development
-- Documentation
-
-### Phase 3
-
-- Data collection pipeline
-- Data preprocessing
-- Model development
-- Prediction services
-
-### Phase 4
-
-- Dashboard development
-- Testing
-- Performance optimization
-- Deployment
-
----
+- **Backend:** Python, FastAPI, SQLAlchemy
+- **Database:** PostgreSQL
+- **ML:** scikit-learn, pandas, numpy
+- **External data:** Open-Meteo (live weather/forecast), NASA POWER (historical solar/meteorology)
+- **Testing:** pytest, pytest-mock
+- **Deployment:** Docker, Docker Compose
 
 ## Research Inspiration
+- Danner, P. & de Meer, H. (2026). *Two-Stage Photovoltaic Forecasting: Separating Weather Prediction from Plant-Characteristics.* SMARTGREENS 2026. Informed the architectural separation between weather ingestion and the prediction model, and the emphasis on honest forecast-error evaluation.
+- Metsch, T. & Hoban, A. (2025). *Breaking Barriers: From Black Box to Intent-Driven, User-Friendly Power Management.* SMARTGREENS 2025. A cross-domain (cloud/data-center power management) inspiration for the explainable, non-black-box design of the recommendation engine — not a renewable-energy methodology reproduced here.
 
-This project is inspired by ongoing research in:
+## Project Structure
+See Architecture above. Detailed docs in `docs/`.
 
-- Artificial Intelligence for Smart Grids
-- Renewable Energy Forecasting
-- Energy Analytics
-- Intelligent Decision Support Systems
-- Machine Learning for Sustainable Energy
-- API Driven Energy Platforms
+## Installation
+```bash
+git clone https://github.com/official-darshan/EnerVision-API-AI-Powered-Renewable-Energy-Intelligence-Decision-Support-Platform.git
+cd EnerVision-API-AI-Powered-Renewable-Energy-Intelligence-Decision-Support-Platform/EnerVision-API
+python -m venv venv
+venv\Scripts\activate
+pip install -r requirements.txt
+```
 
-The implementation is an original software project developed by integrating concepts from multiple research directions rather than replicating any single research paper.
-
----
-
-## Future Enhancements
-
-Potential future extensions include:
-
-- Battery health prediction
-- Carbon intensity estimation
-- EV charging optimization
-- Digital Twin integration
-- Explainable AI
-- Predictive maintenance
-- Multi-region energy analytics
-- Real-time monitoring dashboard
-
----
-
-## Current Status
-
-Project planning is in progress.
-
-Implementation will begin after completing the system architecture, API design, database schema, and project documentation.
-
----
-
-## License
-
-This project is currently intended for academic and educational purposes.
-
----
-
-## Author
-
-**Darshan Mistry**
-
-Bachelor of Science in Data Science
-
----
-
-## Acknowledgements
-
-This project is inspired by current research in renewable energy systems, artificial intelligence, smart grids, and modern API development. It aims to bridge concepts from Data Science and software engineering into a practical and scalable solution.
+## Environment Variables
+Copy `.env.example` to `.env` and fill in real values:
