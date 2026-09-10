@@ -12,5 +12,16 @@ services:
     volumes:
       - pgdata:/var/lib/postgresql/data
 
+  api:
+    build: .
+    container_name: enervision-api
+    restart: unless-stopped
+    depends_on:
+      - db
+    environment:
+      DATABASE_URL: postgresql://enervision:enervision_dev_password@db:5432/enervision_db
+    ports:
+      - "8000:8000"
+
 volumes:
   pgdata:
